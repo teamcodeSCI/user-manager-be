@@ -19,6 +19,12 @@ class UserController extends Controller
             }
             /** @var \App\Models\User $user **/
             $user = Auth::user();
+            if ($user['role'] !== 'ADMIN') {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Bạn không đủ quyền truy cập',
+                ], 401);
+            }
             $createToken = $user->createToken($user->email);
             $user['token'] = 'Bearer ' . $createToken->accessToken;
 
@@ -74,6 +80,137 @@ class UserController extends Controller
                 'status' => true,
                 'message' => 'Success',
                 'data' => $user
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
+    }
+    public function createUser(Request $request)
+    {
+        try {
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tìm thấy User',
+                ], 400);
+            }
+            if ($user['role'] !== 'ADMIN') {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Bạn không đủ quyền truy cập',
+                ], 401);
+            }
+            $input = $request->all();
+            $input['role'] = 'MEMBER';
+            $validator = FacadesValidator::make($input, [
+                'first_name' => 'required',
+                'last_name' => 'required',
+                'birthday' => 'required',
+                'email' => 'required|email',
+                'phone' => 'required',
+                'role' => 'required',
+                'password' => 'required',
+                'c_password' => 'required|same:password',
+            ]);
+            if ($validator->fails()) {
+                return response()->json(['status' => false, 'message' => $validator->errors()], 400);
+            }
+
+            $input['password'] = bcrypt($input['password']);
+            $user = User::create($input);
+
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' =>
+                [
+                    'id' => $user['id'],
+                    'first_name' => $user['first_name'],
+                    'last_name' => $user['last_name'],
+                    'birthday' => $user['birthday'],
+                    'email' => $user['email'],
+                    'phone' => $user['phone']
+                ]
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
+    }
+    public function getAllUser()
+    {
+        try {
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tìm thấy User',
+                ], 400);
+            }
+            if ($user['role'] !== 'ADMIN') {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Bạn không đủ quyền truy cập',
+                ], 401);
+            }
+            $users = User::select('id', 'first_name', 'last_name', 'birthday', 'email', 'phone')->where('role', '=', 'MEMBER')->orderBy('created_at', 'desc')->get();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' => $users
+            ], 200);
+        } catch (Exception $e) {
+            return response()->json([
+                'status' => false,
+                'message' => $e
+            ], 500);
+        }
+    }
+    public function deleteUser($id)
+    {
+        try {
+            $userId = auth('api')->user()->id;
+            $user = User::find($userId);
+            if ($user === null || !$user) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tìm thấy User',
+                ], 400);
+            }
+            if ($user['role'] !== 'ADMIN') {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Bạn không đủ quyền truy cập',
+                ], 401);
+            }
+            $staff = User::find($id);
+            if (!$staff) {
+                return response()->json([
+                    'status' => false,
+                    'message' => 'Không tìm thấy User',
+                ], 400);
+            }
+            $staff->delete();
+            return response()->json([
+                'status' => true,
+                'message' => 'Success',
+                'data' =>
+                [
+                    'id' => $staff['id'],
+                    'first_name' => $staff['first_name'],
+                    'last_name' => $staff['last_name'],
+                    'birthday' => $staff['birthday'],
+                    'email' => $staff['email'],
+                    'phone' => $staff['phone']
+                ]
             ], 200);
         } catch (Exception $e) {
             return response()->json([
