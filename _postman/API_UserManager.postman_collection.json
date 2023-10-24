@@ -1,0 +1,207 @@
+{
+	"info": {
+		"_postman_id": "7ceb8f0f-df0e-40b5-bae4-f3ac7aba5fa3",
+		"name": "API_UserManager",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18193777"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Đoàn Minh\",\r\n    \"last_name\": \"Đức\",\r\n    \"birthday\": \"2000-06-18\",\r\n    \"email\": \"ducdm@scigroup.com.vn\",\r\n    \"phone\": \"0985834484\",\r\n    \"role\": \"ADMIN\",\r\n    \"password\": \"123456aA\",\r\n    \"c_password\": \"123456aA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.196.60.95/project/user-manager/public/api/auth/register",
+					"protocol": "http",
+					"host": [
+						"10",
+						"196",
+						"60",
+						"95"
+					],
+					"path": [
+						"project",
+						"user-manager",
+						"public",
+						"api",
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "create-user",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmMxMGRmNTBlZWRhMmVlNTMxNzc1ZWU4NGFkNjVkYjQ3YTk2MmFiOWNmZjk3NzIyNzIyNzRhMmZhMDliYjY0Yjk4MzFjNjY5ODU1YjMxNTEiLCJpYXQiOjE2OTc4NzEwNDEuMDQ3NDgxLCJuYmYiOjE2OTc4NzEwNDEuMDQ3NDgzLCJleHAiOjE3Mjk0OTM0NDEuMDQzNDMyLCJzdWIiOiIyMiIsInNjb3BlcyI6W119.nIv6mXIBxHygI9SkZ7o72SecJ3f2VNJubHtk2Zv06ahiMlA0CXdQHMGA5VcasfBLP8aGtKfdV8iByYDGHhffOujaZQrSGtEgR9y53t8m3qQ-MHML9ZmRurTfw53rRfuu1F2RTRBlp_kPm5MnwUvRs8ILHVu8I_ZGklPalYJPA8qBLxkfMZEFIYiEjtS_CuVk3Nbc3zVCdkFyq-UmEfc6jWKGBtBp_nmGK0dyPBBiV6ChSJMHH_s0GpCjf1Xk6UcrKl6k6rzk-TPVE5S-z8-Ch8ECY7CwIYbBw-GrTGZg0vKXdjJwtARF9oZnOk_mg6s-ARh1cau7UAYkxuCffEt-jhoXLmUXeACacl2DpSLPjVkFELABOGnpg4jrQUPaAhaD5iyv4UckAJnZYs9m2SVvQzO2y_HrmfFf_5DB201r4KEU5hw91NKj2Hv8YHzStMxgdN9hYGz9iTHidV_oCWtX9yKSNRZ3h0vJh7sRV3Kh7V19JUc7TIyzTU79fFIdoJJXxOc0SuHjUPVsYtQwnsWGtQIzH_jRUVPkKV0S-qNJy71MEPrr_piIYYZX70cGZ5lRgqmdXTQtn4yb3PD9tSTP9J6lCe8_tT8VPgvW2XifPXGWxsb6vUElE2Lj8YUcW4Urj5eu0XUisa8bc83CI-wfC7qij1_Eu95UM2pNumS9TtU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"first_name\": \"Hoàng Minh\",\r\n    \"last_name\": \"Cương\",\r\n    \"birthday\": \"2000-06-18\",\r\n    \"email\": \"cuonghm2@scigroup.com.vn\",\r\n    \"phone\": \"0985834484\",\r\n    \"password\": \"123456aA\",\r\n    \"c_password\": \"123456aA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.196.60.95/project/user-manager/public/api/create-user",
+					"protocol": "http",
+					"host": [
+						"10",
+						"196",
+						"60",
+						"95"
+					],
+					"path": [
+						"project",
+						"user-manager",
+						"public",
+						"api",
+						"create-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ducdm@scigroup.com.vn\",\r\n    \"password\": \"123456aA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.196.60.95/project/user-manager/public/api/auth/login",
+					"protocol": "http",
+					"host": [
+						"10",
+						"196",
+						"60",
+						"95"
+					],
+					"path": [
+						"project",
+						"user-manager",
+						"public",
+						"api",
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmMxMGRmNTBlZWRhMmVlNTMxNzc1ZWU4NGFkNjVkYjQ3YTk2MmFiOWNmZjk3NzIyNzIyNzRhMmZhMDliYjY0Yjk4MzFjNjY5ODU1YjMxNTEiLCJpYXQiOjE2OTc4NzEwNDEuMDQ3NDgxLCJuYmYiOjE2OTc4NzEwNDEuMDQ3NDgzLCJleHAiOjE3Mjk0OTM0NDEuMDQzNDMyLCJzdWIiOiIyMiIsInNjb3BlcyI6W119.nIv6mXIBxHygI9SkZ7o72SecJ3f2VNJubHtk2Zv06ahiMlA0CXdQHMGA5VcasfBLP8aGtKfdV8iByYDGHhffOujaZQrSGtEgR9y53t8m3qQ-MHML9ZmRurTfw53rRfuu1F2RTRBlp_kPm5MnwUvRs8ILHVu8I_ZGklPalYJPA8qBLxkfMZEFIYiEjtS_CuVk3Nbc3zVCdkFyq-UmEfc6jWKGBtBp_nmGK0dyPBBiV6ChSJMHH_s0GpCjf1Xk6UcrKl6k6rzk-TPVE5S-z8-Ch8ECY7CwIYbBw-GrTGZg0vKXdjJwtARF9oZnOk_mg6s-ARh1cau7UAYkxuCffEt-jhoXLmUXeACacl2DpSLPjVkFELABOGnpg4jrQUPaAhaD5iyv4UckAJnZYs9m2SVvQzO2y_HrmfFf_5DB201r4KEU5hw91NKj2Hv8YHzStMxgdN9hYGz9iTHidV_oCWtX9yKSNRZ3h0vJh7sRV3Kh7V19JUc7TIyzTU79fFIdoJJXxOc0SuHjUPVsYtQwnsWGtQIzH_jRUVPkKV0S-qNJy71MEPrr_piIYYZX70cGZ5lRgqmdXTQtn4yb3PD9tSTP9J6lCe8_tT8VPgvW2XifPXGWxsb6vUElE2Lj8YUcW4Urj5eu0XUisa8bc83CI-wfC7qij1_Eu95UM2pNumS9TtU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"ducdm@scigroup.com.vn\",\r\n    \"password\": \"123456aA\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.196.60.95/project/user-manager/public/api/auth/get-user",
+					"protocol": "http",
+					"host": [
+						"10",
+						"196",
+						"60",
+						"95"
+					],
+					"path": [
+						"project",
+						"user-manager",
+						"public",
+						"api",
+						"auth",
+						"get-user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get-all-user",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiYmMxMGRmNTBlZWRhMmVlNTMxNzc1ZWU4NGFkNjVkYjQ3YTk2MmFiOWNmZjk3NzIyNzIyNzRhMmZhMDliYjY0Yjk4MzFjNjY5ODU1YjMxNTEiLCJpYXQiOjE2OTc4NzEwNDEuMDQ3NDgxLCJuYmYiOjE2OTc4NzEwNDEuMDQ3NDgzLCJleHAiOjE3Mjk0OTM0NDEuMDQzNDMyLCJzdWIiOiIyMiIsInNjb3BlcyI6W119.nIv6mXIBxHygI9SkZ7o72SecJ3f2VNJubHtk2Zv06ahiMlA0CXdQHMGA5VcasfBLP8aGtKfdV8iByYDGHhffOujaZQrSGtEgR9y53t8m3qQ-MHML9ZmRurTfw53rRfuu1F2RTRBlp_kPm5MnwUvRs8ILHVu8I_ZGklPalYJPA8qBLxkfMZEFIYiEjtS_CuVk3Nbc3zVCdkFyq-UmEfc6jWKGBtBp_nmGK0dyPBBiV6ChSJMHH_s0GpCjf1Xk6UcrKl6k6rzk-TPVE5S-z8-Ch8ECY7CwIYbBw-GrTGZg0vKXdjJwtARF9oZnOk_mg6s-ARh1cau7UAYkxuCffEt-jhoXLmUXeACacl2DpSLPjVkFELABOGnpg4jrQUPaAhaD5iyv4UckAJnZYs9m2SVvQzO2y_HrmfFf_5DB201r4KEU5hw91NKj2Hv8YHzStMxgdN9hYGz9iTHidV_oCWtX9yKSNRZ3h0vJh7sRV3Kh7V19JUc7TIyzTU79fFIdoJJXxOc0SuHjUPVsYtQwnsWGtQIzH_jRUVPkKV0S-qNJy71MEPrr_piIYYZX70cGZ5lRgqmdXTQtn4yb3PD9tSTP9J6lCe8_tT8VPgvW2XifPXGWxsb6vUElE2Lj8YUcW4Urj5eu0XUisa8bc83CI-wfC7qij1_Eu95UM2pNumS9TtU",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://10.196.60.95/project/user-manager/public/api/get-all-user",
+					"protocol": "http",
+					"host": [
+						"10",
+						"196",
+						"60",
+						"95"
+					],
+					"path": [
+						"project",
+						"user-manager",
+						"public",
+						"api",
+						"get-all-user"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
